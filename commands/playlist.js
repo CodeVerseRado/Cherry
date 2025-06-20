@@ -7,13 +7,12 @@ module.exports = {
     .setDescription('Show current playlist'),
   async execute(interaction) {
     const playlist = getPlaylist(interaction.guildId);
-    if (!playlist.length) return interaction.reply('The playlist is empty.');
+    if (!playlist.length) return interaction.reply('🩷 The playlist is empty.');
 
     const embed = new EmbedBuilder()
       .setTitle('📃 Playlist')
-      .setColor('DarkBlue')
-      .setDescription(playlist.map((song, i) => `${i + 1}. [${song.title}](${song.url})`).join('
-').slice(0, 4000));
+      .setColor('#ff69b4')
+      .setDescription(playlist.map((song, i) => `${i + 1}. [${song.title}](${song.url})`).join('\n'));
 
     interaction.reply({ embeds: [embed] });
   },
